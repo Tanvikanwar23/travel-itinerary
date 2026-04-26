@@ -1,27 +1,27 @@
-# ✈️ TourGenie: AI-Powered Trip Architect
+# TourGenie: AI-Powered Trip Architect
 
 Welcome to **TourGenie**! This project is an intelligent, autonomous trip-planning application that leverages large language models and multi-agent orchestration to build highly personalized, budget-friendly day-to-day travel itineraries. The system searches the internet in real-time to find the best flights, hotels, and attractions, delivering a complete markdown-formatted guide directly to a sleek web interface.
 
-## 🚀 Key Features
+##  Key Features
 - **Real-Time Web Intelligence:** Fetches the latest data on places, flights, and accommodations.
 - **Multi-Agent Orchestration:** Utilizes autonomous AI agents that mimic a real-world travel agency (research, logistics, and planning).
 - **Streaming Responses:** Provides a real-time progress panel as the AI actively builds the itinerary using Server-Sent Events (SSE).
 - **Modern User Interface:** Built with React, featuring a responsive, dual-column Deep Navy glassmorphic layout.
 
-## 🛠 Technology Stack
+##  Technology Stack
 - **Backend Infrastructure:** Python, FastAPI
 - **AI & Orchestration:** CrewAI framework, Google Gemini (LLM)
 - **Data & Search APIs:** Serper (Web Search), SerpAPI (Flights & Hotels)
 - **Frontend App:** React, Vite, Custom CSS (Glassmorphism design)
 
-## 🧠 How the AI Works
+##  How the AI Works
 
 Behind the scenes, the application delegates tasks to a specialized crew of AI agents:
 1. **The Destination Analyst:** Focuses purely on scoping out the best local spots, top-rated restaurants, and cultural activities based on the user's selected interests.
 2. **The Budget & Logistics Coordinator:** Operates alongside the analyst to find viable flight routes and hotel options, ensuring everything aligns with the user's specified budget limits.
 3. **The Master Planner:** Collects all the raw data and insights from the other two agents to synthesize a beautifully formatted, logical, and engaging day-by-day itinerary.
 
-## 💻 Getting Started
+##  Getting Started
 
 Follow these instructions to get the project up and running on your local machine.
 
@@ -70,7 +70,7 @@ npm run dev
 ```
 *The React UI will be accessible at http://localhost:5173.*
 
-## 📂 Repository Structure
+## Repository Structure
 - `/backend`: Contains the AI agent logic (`agents.py`, `tasks.py`, `crew.py`, `tools.py`).
 - `/frontend`: Contains the React application and custom styling.
 - `api.py`: The FastAPI application entry point.
