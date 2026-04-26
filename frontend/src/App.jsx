@@ -106,7 +106,7 @@ export default function App() {
         <div className="left-column">
           {/* Hero */}
           <header className="hero hero-left">
-            <h1>AI Travel Planner</h1>
+            <h1>TourGenie</h1>
             <p className="catchy-line" style={{ fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
               "Wander further, worry less. Let AI craft your perfect journey."
             </p>

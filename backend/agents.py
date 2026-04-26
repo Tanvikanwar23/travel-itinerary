@@ -1,5 +1,5 @@
 """
-agents.py — Defines the 3 CrewAI Agents for the Travel Itinerary Planner.
+agents.py — Defines the 3 CrewAI Agents for TourGenie.
 
 Agents:
     1. Travel Researcher      — Finds attractions, restaurants, and local tips.

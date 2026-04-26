@@ -1,1 +1,1 @@
-# Backend package for the Travel Itinerary Planner
+# Backend package for TourGenie

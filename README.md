@@ -1,101 +1,77 @@
-# 🌍 AI Travel Itinerary Planner
+# ✈️ TourGenie: AI-Powered Trip Architect
 
-A multi-agent AI system that generates detailed, budget-aware, day-by-day travel itineraries using **CrewAI**, **Google Gemini**, and **Serper/SerpAPI** web search. The project features a modern React frontend and a FastAPI backend with Server-Sent Events (SSE) streaming.
+Welcome to **TourGenie**! This project is an intelligent, autonomous trip-planning application that leverages large language models and multi-agent orchestration to build highly personalized, budget-friendly day-to-day travel itineraries. The system searches the internet in real-time to find the best flights, hotels, and attractions, delivering a complete markdown-formatted guide directly to a sleek web interface.
 
-## Architecture
+## 🚀 Key Features
+- **Real-Time Web Intelligence:** Fetches the latest data on places, flights, and accommodations.
+- **Multi-Agent Orchestration:** Utilizes autonomous AI agents that mimic a real-world travel agency (research, logistics, and planning).
+- **Streaming Responses:** Provides a real-time progress panel as the AI actively builds the itinerary using Server-Sent Events (SSE).
+- **Modern User Interface:** Built with React, featuring a responsive, dual-column Deep Navy glassmorphic layout.
 
-This project uses a **3-agent pipeline** powered by CrewAI:
+## 🛠 Technology Stack
+- **Backend Infrastructure:** Python, FastAPI
+- **AI & Orchestration:** CrewAI framework, Google Gemini (LLM)
+- **Data & Search APIs:** Serper (Web Search), SerpAPI (Flights & Hotels)
+- **Frontend App:** React, Vite, Custom CSS (Glassmorphism design)
 
-| Agent | Role | What It Does |
-|-------|------|-------------|
-| 🔍 **Travel Researcher** | Destination Expert | Searches the web for top attractions, restaurants, local tips, and hidden gems. |
-| 💼 **Logistics Manager** | Budget Coordinator | Finds flight & hotel prices, calculates total costs, and verifies the budget. |
-| 📋 **Itinerary Compiler** | Master Planner | Combines all research into a polished, day-by-day Markdown itinerary. |
+## 🧠 How the AI Works
 
-The agents work **sequentially** — the Researcher and Logistics Manager do their work first (often in parallel), then the Compiler reads their outputs and creates the final plan.
+Behind the scenes, the application delegates tasks to a specialized crew of AI agents:
+1. **The Destination Analyst:** Focuses purely on scoping out the best local spots, top-rated restaurants, and cultural activities based on the user's selected interests.
+2. **The Budget & Logistics Coordinator:** Operates alongside the analyst to find viable flight routes and hotel options, ensuring everything aligns with the user's specified budget limits.
+3. **The Master Planner:** Collects all the raw data and insights from the other two agents to synthesize a beautifully formatted, logical, and engaging day-by-day itinerary.
 
-## Tech Stack
+## 💻 Getting Started
 
-- **Python** — Core language
-- **CrewAI** — Multi-agent orchestration framework
-- **FastAPI** — High-performance backend API with SSE streaming
-- **React + Vite** — Modern frontend with a dark-mode glassmorphism Sage Green theme
-- **Google Gemini** — LLM (gemini-3.1-flash-lite-preview)
-- **Serper API & SerpAPI** — Google search APIs for real-time web data, flights, and hotels
+Follow these instructions to get the project up and running on your local machine.
 
-## Setup
+### Prerequisites
+Make sure you have Node.js and Python installed. You will also need API keys for:
+- [Google AI Studio](https://aistudio.google.com/) (Gemini API)
+- [Serper.dev](https://serper.dev/) (Google Search API)
+- [SerpApi](https://serpapi.com/) (Flights/Hotels API)
 
-### 1. Backend Setup
+### 1. Environment Configuration
+Create a `.env` file in the root directory of the project and populate it with your API keys:
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+SERPER_API_KEY=your_serper_api_key_here
+SERPAPI_API_KEY=your_serpapi_api_key_here
+```
 
-Open a terminal in the root project directory (`Travel_Itinerary_Planner`):
-
+### 2. Backend Installation & Execution
+Open your terminal in the root folder to set up the Python backend:
 ```bash
-# Create & activate a virtual environment
+# Initialize a virtual environment
 python -m venv venv
 
-# Windows
+# Activate the virtual environment (Windows)
 venv\Scripts\activate
-# Mac/Linux
-source venv/bin/activate
+# For Mac/Linux use: source venv/bin/activate
 
-# Install backend dependencies
+# Install the required packages
 pip install -r requirements.txt
-```
 
-### 2. Frontend Setup
-
-Open a separate terminal and navigate to the `frontend` directory:
-
-```bash
-cd frontend
-npm install
-```
-
-### 3. Add your API keys
-
-Edit or create the `.env` file in the root directory and paste your keys:
-
-```env
-GEMINI_API_KEY=your_gemini_key_here
-SERPER_API_KEY=your_serper_key_here
-SERPAPI_API_KEY=your_serpapi_key_here
-```
-
-- **Gemini API Key:** Get it free from [Google AI Studio](https://aistudio.google.com/app/apikey)
-- **Serper API Key:** Used for general web search. Get 2,500 free searches from [serper.dev](https://serper.dev)
-- **SerpAPI Key:** Used for Google Flights and Google Hotels searches. Get it from [serpapi.com](https://serpapi.com)
-
-## Usage
-
-### Run the Backend Server
-```bash
-# In the project root (ensure venv is activated)
+# Start the FastAPI server
 python api.py
 ```
-The API server will run at `http://localhost:8000`.
+*The backend API will now be listening on http://localhost:8000.*
 
-### Run the Frontend
+### 3. Frontend Installation & Execution
+Open a second terminal window and navigate into the `frontend` folder:
 ```bash
-# In the frontend directory
+cd frontend
+
+# Install Node dependencies
+npm install
+
+# Launch the Vite development server
 npm run dev
 ```
-The React frontend will be available at `http://localhost:5173`. Open this URL in your browser to start planning!
+*The React UI will be accessible at http://localhost:5173.*
 
-## Project Structure
-
-```
-Travel_Itinerary_Planner/
-├── .env                  # API Keys (not committed to git)
-├── requirements.txt      # Python dependencies
-├── README.md             # Project documentation
-├── api.py                # FastAPI backend server with SSE
-├── frontend/             # React + Vite frontend application
-│   ├── src/              # React components and styling
-│   ├── package.json      # Node.js dependencies
-│   └── vite.config.js    # Vite configuration
-└── backend/
-    ├── agents.py         # 3 CrewAI agent definitions
-    ├── tasks.py          # Task definitions for each agent
-    ├── tools.py          # Custom tools (Flight/Hotel search)
-    └── crew.py           # Assembles agents + tasks into a Crew
-```
+## 📂 Repository Structure
+- `/backend`: Contains the AI agent logic (`agents.py`, `tasks.py`, `crew.py`, `tools.py`).
+- `/frontend`: Contains the React application and custom styling.
+- `api.py`: The FastAPI application entry point.
+- `requirements.txt`: Python package dependencies.
