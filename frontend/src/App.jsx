@@ -102,26 +102,31 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Hero */}
-      <header className="hero">
+      <div className="layout-split">
+        <div className="left-column">
+          {/* Hero */}
+          <header className="hero hero-left">
+            <h1>AI Travel Planner</h1>
+            <p className="catchy-line" style={{ fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+              "Wander further, worry less. Let AI craft your perfect journey."
+            </p>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>Enter your trip details and get a personalized, budget-aware itinerary.</p>
+          </header>
 
-        <h1>AI Travel Planner</h1>
-        <p className="catchy-line" style={{ fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
-          "Wander further, worry less. Let AI craft your perfect journey."
-        </p>
-        <p>Enter your trip details and get a personalized, budget-aware itinerary.</p>
-      </header>
+          {/* Idle — feature cards */}
+          {appState === 'idle' && <FeatureCards />}
+        </div>
 
-      {/* Form */}
-      <TravelForm
-        onSubmit={handleSubmit}
-        disabled={appState === 'loading'}
-      />
+        <div className="right-column">
+          {/* Form */}
+          <TravelForm
+            onSubmit={handleSubmit}
+            disabled={appState === 'loading'}
+          />
+        </div>
+      </div>
 
       <div className="divider" />
-
-      {/* Idle — feature cards */}
-      {appState === 'idle' && <FeatureCards />}
 
       {/* Loading — progress panel */}
       {appState === 'loading' && (
